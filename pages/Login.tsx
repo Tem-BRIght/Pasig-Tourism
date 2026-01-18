@@ -30,7 +30,7 @@ const Login: React.FC = () => {
               <IonInput placeholder="Enter your password" type="password" className="text-input" />
             </IonItem>
             
-            <IonButton expand="block" className="login-button" routerLink="/Tab1">Log In</IonButton>
+            <IonButton expand="block" className="login-button" routerLink="/Home">Log In</IonButton>
 
             <div className="forgot"><Link to="/forgot">Forgot password?</Link></div>
 
