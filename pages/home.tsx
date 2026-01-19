@@ -138,8 +138,8 @@ const Home: React.FC = () => {
           </div>
           <IonGrid className="popular-grid">
             <IonRow>
-              {popular.slice(0, 2).map((dest) => (
-                <IonCol size="6" key={dest.title}>
+              {popular.map((dest) => (
+                <IonCol key={dest.title}>
                   <div className="popular-card">
                     <div className="image-container">
                       <IonImg src={dest.image} />
@@ -165,33 +165,7 @@ const Home: React.FC = () => {
                 </IonCol>
               ))}
             </IonRow>
-            <IonRow>
-              {popular.slice(2, 4).map((dest) => (
-                <IonCol size="6" key={dest.title}>
-                  <div className="popular-card">
-                    <div className="image-container">
-                      <IonImg src={dest.image} />
-                      <div className="heart-icon">
-                        <IonIcon icon={heart} />
-                      </div>
-                      <div className="ribbon">
-                        {dest.ranking}
-                      </div>
-                    </div>
-                    <div className="card-info">
-                      <h4>{dest.title}</h4>
-                      <div className="rating">
-                      <IonIcon icon={star} />
-                      <span className="rating-value">{dest.rating} ({dest.reviews})</span>
-                      </div>
-                      <div className="distance">
-                        <IonIcon icon={location} /> {dest.distance}
-                      </div>
-                    </div>
-                  </div>
-                </IonCol>
-              ))}
-            </IonRow>
+            
           </IonGrid>
         </section>
 

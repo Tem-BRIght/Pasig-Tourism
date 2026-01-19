@@ -301,7 +301,7 @@
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   background: #fff;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .image-container {
@@ -318,7 +318,7 @@
 .heart-icon {
   position: absolute;
   top: 8px;
-  right: 8px;
+  right: 6em;
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -336,7 +336,7 @@
 .ribbon {
   position: absolute;
   bottom: 8px;
-  right: 8px;
+  right: 6rem;
   width: 32px;
   height: 25px;
   background: rgba(255, 255, 255, 0.9);

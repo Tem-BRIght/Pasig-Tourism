@@ -17,9 +17,9 @@ import {
   IonCol,
   IonCard,
   IonCardContent,
+  IonBackButton,
 } from '@ionic/react';
 import {
-  arrowBack,
   ellipsisVertical,
   camera,
   person,
@@ -36,10 +36,8 @@ const Profile: React.FC = () => {
     <IonPage>
       <IonHeader className="profile-header">
         <IonToolbar className="profile-toolbar">
-          <IonButtons slot="start">
-            <IonButton>
-              <IonIcon icon={arrowBack} />
-            </IonButton>
+            <IonButtons slot="start">
+            <IonBackButton defaultHref="/Home" />
           </IonButtons>
           <IonButtons slot="end">
             <IonButton>
@@ -52,7 +50,7 @@ const Profile: React.FC = () => {
         <div className="profile-top-section">
           <div className="profile-photo-container">
             <IonAvatar className="profile-avatar">
-              <img src="https://via.placeholder.com/150" alt="Profile" />
+              <img src="assets/images/Temporary.png" alt="Profile" />
             </IonAvatar>
             <div className="camera-icon">
               <IonIcon icon={camera} />
