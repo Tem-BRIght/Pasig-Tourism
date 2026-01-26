@@ -9,3 +9,5 @@ cd backend
 mysql -u root < init.sql
 
 mysql --version
+
+choco --version
