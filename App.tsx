@@ -56,7 +56,12 @@ import DestinationDetail from './pages/Home/DestinationDetail/DestinationDetail'
 import LanguageRegion from './pages/Settings/Language';
 import NotificationSettings from './pages/Settings/Notifications';
 import Notifications from './pages/Home/Notifications/Notifications';
-
+import HelpCenter from './pages/Settings/Help';
+import Privacy from './pages/Settings/Privacy';
+import ContactSupport from './pages/Settings/ContactSupport';
+import ReportProblem from './pages/Settings/ReportProblem';
+import BookingHistory from './pages/Settings/BookingHistory';  
+import TermsPrivacy from './pages/Settings/TermsPrivacy';
 
 setupIonicReact();
 
@@ -88,6 +93,12 @@ const TabContainer: React.FC = () => (
       <Route exact path="/home/profile/all-activities" component={AllActivities} />
       <Route exact path="/settings/language-region" component={LanguageRegion} />
       <Route exact path="/settings/notification" component={NotificationSettings} />
+      <Route exact path="/settings/Help" component={HelpCenter} />
+      <Route exact path="/settings/Privacy" component={Privacy} />
+      <Route exact path="/settings/ContactSupport" component={ContactSupport} />
+      <Route exact path="/settings/ReportProblem" component={ReportProblem} />
+      <Route exact path="/settings/BookingHistory" component={BookingHistory} />
+      <Route exact path="/settings/TermsPrivacy" component={TermsPrivacy} />
       <Route exact path="/notifications" component={Notifications} />
       <Route exact path="/" component={() => <Redirect to="/home" />} />
     </IonRouterOutlet>

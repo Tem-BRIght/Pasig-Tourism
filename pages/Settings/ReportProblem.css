@@ -1,0 +1,18 @@
+ion-item {
+  margin-bottom: 14px;
+  --background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+.textarea-item {
+  margin-top: 12px;
+}
+
+.submit-btn {
+  margin-top: 20px;
+  height: 52px;
+  font-weight: 600;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
+}

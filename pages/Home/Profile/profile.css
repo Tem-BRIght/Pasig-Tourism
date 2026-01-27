@@ -1,207 +1,164 @@
-.profile-header {
-  --background: linear-gradient(180deg, #fff 10%, #3b92ff 70%);
+/* PAGE */
+.profile-page {
+  --background: #f5f7fb;
 }
 
+/* HEADER */
+.profile-header ion-toolbar {
+  --background: #ffffff;
+  --border-color: transparent;
+}
+
+/* CONTENT */
 .profile-content {
-  --background: #f8f9fa;
+  padding: 16px;
 }
 
+/* TOP SECTION */
 .profile-top-section {
   text-align: center;
-  padding: 20px;
-  background: linear-gradient(360deg, #fff 20%, #3b92ff 70%);
-  border-bottom: 2px #D1D5DB solid;
-  color: #000;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .profile-photo-container {
   position: relative;
   display: inline-block;
-  color: #fff;
-  margin-bottom: 15px;
 }
 
 .profile-avatar {
-  width: 100px;
-  height: 100px;
-  border: 3px solid #367CFF;
+  width: 110px;
+  height: 110px;
+  border: 4px solid #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
+/* CAMERA ICON (EDIT MODE) */
 .camera-icon {
   position: absolute;
   bottom: 0;
   right: 0;
-  background: #007bff;
+  background: #4f8cff;
+  color: #fff;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #367CFF;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
+/* NAME */
 .profile-name {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 10px 0 5px 0;
+  margin-top: 12px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #222;
 }
 
 .profile-username {
-  color: #367CFF;
-  font-size: 16px;
-  opacity: 0.8;
-  margin: 0;
+  font-size: 14px;
+  color: #7a7a7a;
 }
 
+/* EDIT INPUTS */
+.edit-input {
+  margin: 6px auto;
+  max-width: 260px;
+  --background: #ffffff;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* SECTION */
 .personal-info-section {
   background: #ffffff;
-  margin-top: -19px;
-  padding: 10px 20px 20px;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
 }
 
 .personal-info-section h2 {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.personal-info-section ion-item {
-  --background: white;
-  --border-radius: 10px;
-  margin-bottom: 10px;
-  --inner-padding-end: 16px;
-  --inner-padding-start: 16px;
-}
-
-.personal-info-section ion-icon {
-  color: #007bff;
-}
-
-.info-card {
-  border-radius: 15px;
-  text-align: center;
-  margin: 10px 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  --background: #ffffff;
-}
-
-.info-card ion-icon {
-  font-size: 24px;
-  color: #007bff;
-  margin-bottom: 10px;
-}
-
-.info-card h3 {
   font-size: 16px;
-  font-weight: bold;
-  margin: 5px 0;
-  color: #333;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
-.info-card p {
-  font-size: 14px;
-  color: #666;
-  margin: 0;
+/* LIST ITEMS */
+ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  --background: transparent;
 }
 
+ion-item ion-icon {
+  color: #4f8cff;
+}
+
+/* STATS */
 .stats-section {
-  background: white;
-  padding: 0 20px 20px;
-}
-
-.stats-section ion-col {
-  padding: 0 5px;
+  margin-bottom: 20px;
 }
 
 .stat-card {
-  border-radius: 15px;
+  border-radius: 14px;
   text-align: center;
-  margin: 20px 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.stat-card.visited {
-  --background: #e3f2fd;
-}
-.stat-card.visited h3 {
-  color: #2563EB; 
-}
-
-.stat-card.reviews {
-  --background: #FAF5FF;
-}
-.stat-card.reviews h3 {
-  color: #9333EA; 
-}
-
-.stat-card.soon {
-  --background: #F0FDF4;
-}
-.stat-card.soon h3 {
-  color: #16A34A; 
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
 }
 
 .stat-card h3 {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 10px 0 5px 0;
-  color: #333;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .stat-card p {
-  font-size: 14px;
-  color: #666;
   margin: 0;
+  font-size: 13px;
+  color: #777;
 }
 
-.recent-activity-section {
-  padding:  20px 20px;
-  background: white;
-  margin-top: 1px;
+.stat-card.visited {
+  background: linear-gradient(135deg, #e3f2ff, #f1f7ff);
 }
 
-.recent-activity-section h2 {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 15px;
-  color: #333;
+.stat-card.reviews {
+  background: linear-gradient(135deg, #fff0d6, #fff7ea);
 }
 
-.recent-activity-section ion-item {
-  --background: white;
-  --border-radius: 10px;
-  margin-bottom: 10px;
-  --inner-padding-end: 16px;
-  --inner-padding-start: 16px;
+.stat-card.soon {
+  background: linear-gradient(135deg, #f0f0f0, #fafafa);
 }
 
-.recent-activity-section ion-button {
-  --border-radius: 10px;
-  margin-top: 10px;
+/* ACTION BUTTONS */
+.action-buttons ion-button {
+  border-radius: 14px;
+  font-weight: 500;
 }
 
-.action-buttons {
-  padding: 20px;
-  background: white;
-}
-
+/* BUTTON COLORS */
 .favorites-btn {
-  --background: #ffebee;
-  --color: #d32f2f;
-  --border-radius: 10px;
-  width: 165.5px;
-  margin: 0 auto;
-  height: 94px;
+  --background: #ffe8ec;
+  --color: #d93a5f;
 }
 
 .reviews-btn {
-  --background: #f3e5f5;
-  --color: #7b1fa2;
-  --border-radius: 10px;
-  margin: 0 auto;
-  width: 165.5px;
-  height: 94px;
+  --background: #e9f0ff;
+  --color: #4f8cff;
+}
+
+/* SAVE / EDIT BUTTON */
+ion-button {
+  text-transform: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 360px) {
+  .profile-avatar {
+    width: 90px;
+    height: 90px;
+  }
 }

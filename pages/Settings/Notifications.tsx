@@ -52,12 +52,7 @@ const NotificationSettings: React.FC = () => {
 
         {/* PUSH NOTIFICATIONS */}
         <div className="section">
-          <h3>🔔 Push Notifications</h3>
-
-          <IonItem>
-            <IonLabel>New Messages</IonLabel>
-            <IonToggle checked={settings.newMessages} onIonChange={() => toggle('newMessages')} />
-          </IonItem>
+          <h3>Push Notifications</h3>
 
           <IonItem>
             <IonLabel>Booking Updates</IonLabel>
@@ -82,7 +77,7 @@ const NotificationSettings: React.FC = () => {
 
         {/* EMAIL NOTIFICATIONS */}
         <div className="section">
-          <h3>📧 Email Notifications</h3>
+          <h3>Email Notifications</h3>
 
           <IonItem>
             <IonLabel>Booking Confirmations</IonLabel>
@@ -90,48 +85,10 @@ const NotificationSettings: React.FC = () => {
           </IonItem>
 
           <IonItem>
-            <IonLabel>Monthly Newsletter</IonLabel>
-            <IonToggle checked={settings.emailNewsletter} onIonChange={() => toggle('emailNewsletter')} />
-          </IonItem>
-
-          <IonItem>
             <IonLabel>Special Offers</IonLabel>
             <IonToggle checked={settings.emailOffers} onIonChange={() => toggle('emailOffers')} />
           </IonItem>
-        </div>
-
-        {/* QUIET HOURS */}
-        <div className="section">
-          <h3>⏰ Quiet Hours</h3>
-
-          <IonItem>
-            <IonLabel>Enable Quiet Hours</IonLabel>
-            <IonToggle checked={settings.quietHours} onIonChange={() => toggle('quietHours')} />
-          </IonItem>
-
-          <p className="note">From: 10:00 PM — To: 7:00 AM</p>
-          <p className="note">Exceptions: Emergency alerts</p>
-        </div>
-
-        {/* VIBRATION & SOUND */}
-        <div className="section">
-          <h3>📳 Vibration & Sound</h3>
-
-          <IonItem>
-            <IonLabel>Sound</IonLabel>
-            <IonToggle checked={settings.sound} onIonChange={() => toggle('sound')} />
-          </IonItem>
-
-          <IonItem>
-            <IonLabel>Vibration</IonLabel>
-            <IonToggle checked={settings.vibration} onIonChange={() => toggle('vibration')} />
-          </IonItem>
-
-          <IonItem>
-            <IonLabel>LED Light</IonLabel>
-            <IonToggle checked={settings.led} onIonChange={() => toggle('led')} />
-          </IonItem>
-        </div>
+        </div>  
 
         {/* ACTION BUTTONS */}
         <div className="actions">

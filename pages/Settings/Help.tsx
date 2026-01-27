@@ -1,41 +1,102 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './Help.css';
 import {
   IonPage,
   IonHeader,
   IonToolbar,
   IonTitle,
   IonContent,
-  IonButtons,
-  IonBackButton,
   IonSearchbar,
   IonList,
   IonItem,
   IonLabel,
-  IonButton,
-  IonIcon
+  IonIcon,
+  IonButtons,
+  IonBackButton,
+  IonAccordion,
+  IonAccordionGroup,
+  IonButton
 } from '@ionic/react';
 import {
-  bookOutline,
-  cardOutline,
-  mapOutline,
-  personOutline,
-  bugOutline,
-  chatbubbleEllipsesOutline,
-  callOutline,
-  mailOutline,
-  locationOutline,
-  helpCircleOutline
+  timeOutline,
+  notificationsOutline,
+  globeOutline,
+  shieldCheckmarkOutline,
+  headsetOutline,
+  warningOutline,
+  informationCircleOutline,
+  documentTextOutline,
+  chatbubblesOutline
 } from 'ionicons/icons';
+import { useIonRouter } from '@ionic/react';
 
-import './Help.css';
+const HelpCenter: React.FC = () => {
+  const router = useIonRouter();
+  const [query, setQuery] = useState('');
 
-const Help: React.FC = () => {
+  const goTo = (path: string) => router.push(path);
+
+  const helpItems = [
+    {
+      title: 'Booking History',
+      desc: 'View your past and completed tour bookings',
+      icon: timeOutline,
+      route: '/settings/bookings'
+    },
+    {
+      title: 'Notification Settings',
+      desc: 'Manage alerts, reminders, and updates',
+      icon: notificationsOutline,
+      route: '/settings/notification'
+    },
+    {
+      title: 'Language',
+      desc: 'Change the app display language',
+      icon: globeOutline,
+      route: '/settings/language'
+    },
+    {
+      title: 'Privacy Settings',
+      desc: 'Control profile visibility and data sharing',
+      icon: shieldCheckmarkOutline,
+      route: '/settings/privacy'
+    },
+    {
+      title: 'Contact Support',
+      desc: 'Reach our support team for help',
+      icon: headsetOutline,
+      route: '/settings/contact-support'
+    },
+    {
+      title: 'Report a Problem',
+      desc: 'Send feedback or report technical issues',
+      icon: warningOutline,
+      route: '/settings/report-problem'
+    },
+    {
+      title: 'About App',
+      desc: 'Learn more about the Pasig Tourism App',
+      icon: informationCircleOutline,
+      route: '/settings/about'
+    },
+    {
+      title: 'Terms & Privacy',
+      desc: 'Read our terms and privacy policy',
+      icon: documentTextOutline,
+      route: '/settings/terms'
+    }
+  ];
+
+  const filteredItems = helpItems.filter(item =>
+    item.title.toLowerCase().includes(query.toLowerCase())
+  );
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/tabs/settings" />
+            <IonBackButton defaultHref="/settings" />
           </IonButtons>
           <IonTitle>Help Center</IonTitle>
         </IonToolbar>
@@ -43,113 +104,74 @@ const Help: React.FC = () => {
 
       <IonContent>
 
-        {/* Search */}
-        <div className="help-search">
-          <IonSearchbar placeholder="Type your question..." />
-        </div>
+        {/* SEARCH */}
+        <IonSearchbar 
+          className="help-searchbar"
+          placeholder="Search help topics"
+          value={query}
+          onIonChange={e => setQuery(e.detail.value!)}
+        />
 
-        {/* Categories */}
-        <IonList inset>
-          <IonItem lines="none">
-            <IonIcon icon={helpCircleOutline} slot="start" />
-            <IonLabel><strong>Categories</strong></IonLabel>
-          </IonItem>
-
-          <IonItem button>
-            <IonIcon icon={bookOutline} slot="start" />
-            <IonLabel>Getting Started</IonLabel>
-          </IonItem>
-
-          <IonItem button>
-            <IonIcon icon={cardOutline} slot="start" />
-            <IonLabel>Booking & Payments</IonLabel>
-          </IonItem>
-
-          <IonItem button>
-            <IonIcon icon={mapOutline} slot="start" />
-            <IonLabel>Tour Guides</IonLabel>
-          </IonItem>
-
-          <IonItem button>
-            <IonIcon icon={mapOutline} slot="start" />
-            <IonLabel>Navigation & Maps</IonLabel>
-          </IonItem>
-
-          <IonItem button>
-            <IonIcon icon={personOutline} slot="start" />
-            <IonLabel>Account & Profile</IonLabel>
-          </IonItem>
-
-          <IonItem button>
-            <IonIcon icon={bugOutline} slot="start" />
-            <IonLabel>Technical Issues</IonLabel>
-          </IonItem>
+        {/* HELP TOPICS */}
+        <IonList>
+          {filteredItems.map((item, index) => (
+            <IonItem key={index} button onClick={() => goTo(item.route)}>
+              <IonIcon icon={item.icon} slot="start" />
+              <IonLabel>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </IonLabel>
+            </IonItem>
+          ))}
         </IonList>
 
-        {/* FAQs */}
-        <IonList inset>
+        {/* FAQ SECTION */}
+        <IonList>
           <IonItem lines="none">
-            <IonIcon icon={helpCircleOutline} slot="start" />
-            <IonLabel><strong>Frequently Asked Questions</strong></IonLabel>
+            <IonLabel>
+              <h2>Frequently Asked Questions</h2>
+            </IonLabel>
           </IonItem>
 
-          <IonItem button>
-            <IonLabel>How do I book a tour guide?</IonLabel>
-          </IonItem>
+          <IonAccordionGroup>
+            <IonAccordion value="faq1">
+              <IonItem slot="header">
+                <IonLabel>How do I book a tour?</IonLabel>
+              </IonItem>
+              <div className="ion-padding" slot="content">
+                You can book a tour through the Tours section of the app.
+              </div>
+            </IonAccordion>
 
-          <IonItem button>
-            <IonLabel>How do I cancel a booking?</IonLabel>
-          </IonItem>
+            <IonAccordion value="faq2">
+              <IonItem slot="header">
+                <IonLabel>Can I change my booking?</IonLabel>
+              </IonItem>
+              <div className="ion-padding" slot="content">
+                Yes, go to Booking History and select the booking to modify.
+              </div>
+            </IonAccordion>
 
-          <IonItem button>
-            <IonLabel>Is there an offline mode?</IonLabel>
-          </IonItem>
-
-          <IonItem button>
-            <IonLabel>How do I earn badges?</IonLabel>
-          </IonItem>
-
-          <IonItem button>
-            <IonLabel>How do I contact support?</IonLabel>
-          </IonItem>
+            <IonAccordion value="faq3">
+              <IonItem slot="header">
+                <IonLabel>Is my data secure?</IonLabel>
+              </IonItem>
+              <div className="ion-padding" slot="content">
+                We prioritize your privacy and protect your personal data.
+              </div>
+            </IonAccordion>
+          </IonAccordionGroup>
         </IonList>
 
-        {/* Contact Options */}
-        <IonList inset>
-          <IonItem lines="none">
-            <IonIcon icon={callOutline} slot="start" />
-            <IonLabel><strong>Contact Options</strong></IonLabel>
-          </IonItem>
-
-          <IonItem button>
-            <IonIcon icon={chatbubbleEllipsesOutline} slot="start" />
-            <IonLabel>Live Chat with Support</IonLabel>
-          </IonItem>
-
-          <IonItem button>
-            <IonIcon icon={callOutline} slot="start" />
-            <IonLabel>Call CATO Office</IonLabel>
-          </IonItem>
-
-          <IonItem button>
-            <IonIcon icon={mailOutline} slot="start" />
-            <IonLabel>Email Support</IonLabel>
-          </IonItem>
-
-          <IonItem button>
-            <IonIcon icon={locationOutline} slot="start" />
-            <IonLabel>Visit in Person</IonLabel>
-          </IonItem>
-        </IonList>
-
-        {/* Actions */}
-        <div className="help-actions">
-          <IonButton expand="block" fill="outline">
-            View All FAQs
-          </IonButton>
-
-          <IonButton expand="block">
-            Contact Us
+        {/* CHAT WITH SUPPORT */}
+        <div className="ion-padding">
+          <IonButton
+            expand="block"
+            color="primary"
+            onClick={() => goTo('/support/chat')}
+          >
+            <IonIcon icon={chatbubblesOutline} slot="start" />
+            Chat with Support
           </IonButton>
         </div>
 
@@ -158,4 +180,4 @@ const Help: React.FC = () => {
   );
 };
 
-export default Help;
+export default HelpCenter;

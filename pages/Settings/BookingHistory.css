@@ -1,0 +1,24 @@
+.booking-history-content {
+  --background: #f9f9fb;
+}
+
+ion-item {
+  border-radius: 14px;
+  margin: 10px;
+  background: #fff;
+}
+
+ion-chip {
+  margin-top: 6px;
+  gap: 10px;
+  font-size: 0.75rem;
+}
+
+ion-label h2 {
+  font-weight: 600;
+}
+
+ion-label p {
+  font-size: 0.8rem;
+  color: #666;
+}

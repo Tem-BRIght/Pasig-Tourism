@@ -46,3 +46,50 @@
 .distance ion-icon {
   margin-right: 4px;
 }
+
+.detail-info p {
+  margin: 0 0 8px 0;
+  color: #666;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+  justify-content: center;
+}
+
+.about-section {
+  margin-top: 16px;
+}
+
+.about-section h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.about-section p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.section {
+  margin-top: 16px;
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.section h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.section p {
+  margin: 0;
+  line-height: 1.5;
+  color: #666;
+}

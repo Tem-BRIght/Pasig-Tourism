@@ -1,36 +1,86 @@
-/* Page background */
-ion-content {
-  --background: #f9fafb;
+ion-page {
+  background: #f6f8fc;
 }
 
-/* Search bar spacing */
-.help-search {
-  padding: 12px 16px 0;
+/* HEADER */
+ion-toolbar {
+  --background: #ffffff;
+  --border-color: transparent;
 }
 
-/* Section cards */
-ion-list[inset] {
-  margin-top: 16px;
-  border-radius: 16px;
+/* SEARCH BAR */
+.help-searchbar {
+  --border-radius: 14px;
+  margin: 12px 16px 6px;
+  width: auto;
+  display: flex;
 }
 
-/* Section headers */
-ion-item strong {
-  font-size: 14px;
+/* SECTION TITLES */
+ion-item h2 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #444;
+  margin: 12px 0 6px;
+}
+
+/* HELP ITEMS */
+ion-item {
+  --background: #ffffff;
+  margin: 6px 16px;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+ion-item h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+ion-item p {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* ICON STYLE */
+ion-icon {
+  font-size: 20px;
+  color: #3b82f6;
+}
+
+/* FAQ ACCORDION */
+ion-accordion {
+  margin: 8px 16px;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+ion-accordion ion-item {
+  box-shadow: none;
+  margin: 0;
+}
+
+ion-accordion div[slot="content"] {
+  font-size: 13px;
   color: #374151;
+  line-height: 1.5;
 }
 
-/* Icons */
-ion-item ion-icon {
-  color: var(--ion-color-primary);
-  font-size: 18px;
+/* CHAT BUTTON */
+
+ion-button ion-icon {
+  margin-right: 8px;
 }
 
-/* Action buttons */
-.help-actions {
-  padding: 16px;
-}
+/* RESPONSIVE */
+@media (max-width: 400px) {
+  ion-item {
+    margin: 6px 12px;
+  }
 
-.help-actions ion-button:first-child {
-  margin-bottom: 8px;
+  ion-searchbar {
+    margin: 10px 12px;
+  }
 }

@@ -1,0 +1,20 @@
+.terms-content {
+  --background: #f8f9fc;
+  padding: 10px;
+}
+
+.terms-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.accordion-body {
+  padding: 16px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #444;
+  background: #ffffff;
+}

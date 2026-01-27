@@ -1,101 +1,140 @@
-/* Container and Background */
-.chat-content {
-  --background: #f4f7f6;
+AIGuide.css
+
+.ai-header {
+  background: #eaf1ff;
 }
 
-.message-list {
+.title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: #4b6cb7;
+}
+
+.chat-content {
+  --background: #f5f7fb;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-area {
   padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding-bottom: 20px;
 }
 
-/* Message Bubble Logic */
-.message-wrapper {
+.message-container {
   display: flex;
   align-items: flex-end;
-  max-width: 85%;
-  margin-bottom: 8px;
-}
-
-.message-wrapper.ai {
-  align-self: flex-start;
-  flex-direction: row;
-}
-
-.message-wrapper.user {
-  align-self: flex-end;
-  flex-direction: row-reverse;
-}
-
-.message-bubble {
-  padding: 12px 16px;
-  border-radius: 18px;
-  font-size: 14.5px;
-  line-height: 1.5;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.ai .message-bubble {
-  background: #ffffff;
-  color: #333;
-  border-bottom-left-radius: 4px;
-}
-
-.user .message-bubble {
-  background: #367CFF;
-  color: #ffffff;
-  border-bottom-right-radius: 4px;
-}
-
-/* AI Planning Card (Maps/Photos) */
-.ai-plan-card {
-  margin-top: 12px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid #e0e0e0;
-  background: white;
-}
-
-.plan-title {
-  font-size: 16px;
-  font-weight: 700;
-  margin: 0 0 8px 0;
-  color: #1a1a1a;
-}
-
-/* Suggestion Chips */
-.suggestion-container {
-  display: flex;
-  overflow-x: auto;
-  padding: 10px 16px;
-  background: transparent;
+  margin-bottom: 12px;
   gap: 8px;
 }
 
-.suggestion-container::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for a clean mobile look */
+.message-container.user {
+  justify-content: flex-end;
 }
 
-ion-chip {
-  --background: #ffffff;
-  --color: #367CFF;
-  border: 1px solid #367CFF;
-  font-weight: 500;
-  margin: 0;
+.profile-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
-/* Footer Input Area */
-.chat-input-toolbar {
-  --background: #ffffff;
-  padding: 8px 4px;
-  border-top: 1px solid #eee;
+.bubble {
+  max-width: 75%;
+  padding: 12px 14px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.4;
+  white-space: pre-line;
 }
 
-.chat-input-item {
-  --background: #f0f2f5;
-  --border-radius: 24px;
-  --padding-start: 16px;
+.bubble.ai {
+  background: #ffffff;
+  border-top-left-radius: 6px;
+}
+
+.bubble.user {
+  background: #2563eb;
+  color: white;
+  border-top-right-radius: 6px;
+}
+
+.suggestions {
+  background: #dbeafe;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.suggest-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.suggestions button {
+  width: 100%;
+  background: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.typing span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 4px;
+  background: #999;
+  border-radius: 50%;
+  animation: blink 1.4s infinite both;
+}
+
+@keyframes blink {
+  0% { opacity: .2; }
+  20% { opacity: 1; }
+  100% { opacity: .2; }
+}
+
+.input-area {
+  bottom: 0;
+  position: fixed;
+  display: flex;
+  width: 100%;
+  padding: 10px;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  
+}
+
+.input-area input {
+  flex: 1;
+  border: none;
+  background: #f1f5f9;
+  border-radius: 20px;
+  padding: 10px 14px;
   margin: 0 8px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #2563eb;
+}
+
+.send-btn {
+  background: #2563eb;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
 }

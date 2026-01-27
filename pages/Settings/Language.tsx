@@ -91,40 +91,6 @@ const LanguageRegion: React.FC = () => {
           </IonRadioGroup>
         </section>
 
-        {/* TIME FORMAT */}
-        <section className="section">
-          <h3><IonIcon icon={timeOutline} /> Time Format</h3>
-          <IonRadioGroup value="12">
-            <IonItem>
-              <IonLabel>12-hour (2:30 PM)</IonLabel>
-              <IonRadio value="12" slot="end"/>
-            </IonItem>
-            <IonItem>
-              <IonLabel>24-hour (14:30)</IonLabel>
-              <IonRadio value="24" slot="end"/>
-            </IonItem>
-          </IonRadioGroup>
-        </section>
-
-        {/* DATE FORMAT */}
-        <section className="section">
-          <h3><IonIcon icon={calendarOutline} /> Date Format</h3>
-          <IonRadioGroup value="mdy">
-            <IonItem>
-              <IonLabel>MM/DD/YYYY (11/20/2026)</IonLabel>
-              <IonRadio value="mdy" slot="end"/>
-            </IonItem>
-            <IonItem>
-              <IonLabel>DD/MM/YYYY (20/11/2026)</IonLabel>
-              <IonRadio value="dmy" slot="end"/>
-            </IonItem>
-            <IonItem>
-              <IonLabel>YYYY-MM-DD (2026-11-20)</IonLabel>
-              <IonRadio value="ymd" slot="end"/>
-            </IonItem>
-          </IonRadioGroup>
-        </section>
-
         <div className="action-buttons">
           <IonButton fill="outline" color="medium" onClick={() => router.goBack()}>Cancel</IonButton>
           <IonButton color="primary">Save</IonButton>

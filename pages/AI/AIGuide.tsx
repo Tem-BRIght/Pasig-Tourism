@@ -1,117 +1,133 @@
 import React, { useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonIcon } from '@ionic/react';
-import { sparkles } from 'ionicons/icons';
-import './AIGuide.css';
-import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
-import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonIcon
+} from '@ionic/react';
+import { mic, send } from 'ionicons/icons';
 
-type MessageType = {
-  message: string;
-  sentTime: string;
-  sender: string;
-  direction: 'incoming' | 'outgoing';
-  position: 'single';
+import './AIGuide.css';
+
+type ChatMessage = {
+  text: string;
+  sender: 'ai' | 'user';
+  typing?: boolean;
 };
 
-const AIGuide: React.FC = () => {
-  const API_KEY = "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";
-  const systemMessage = {
-    "role": "system", "content": "You are a travel assistant for Pasig City, Philippines. Help users plan trips, suggest places, and answer questions about tourism. Explain things clearly and helpfully."
-  }
+const suggestedQuestions = [
+  'What are the top 5 must-see places?',
+  'Recommend historical sites near me',
+  'Plan a 1-day heritage tour',
+  'Find family-friendly spots'
+];
 
-  const [messages, setMessages] = useState<MessageType[]>([
+const AIGuide: React.FC = () => {
+  const [messages, setMessages] = useState<ChatMessage[]>([
     {
-      message: "Mabuhay! I'm ALI, your AI travel assistant for Pasig City. Ask me anything about planning your trip!",
-      sentTime: "just now",
-      sender: "ALI",
-      direction: "incoming",
-      position: "single"
+      text: "Hello! I'm your Pasig AI Guide 👋\nHow can I help you explore today?",
+      sender: 'ai'
     }
   ]);
+
+  const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
 
-  const handleSend = async (message: string) => {
-    const newMessage = {
-      message,
-      direction: 'outgoing' as const,
-      sender: "user",
-      position: "single" as const,
-      sentTime: new Date().toLocaleTimeString()
-    };
+  const sendMessage = (text: string) => {
+    if (!text.trim()) return;
 
-    const newMessages = [...messages, newMessage];
-    
-    setMessages(newMessages);
-
+    setMessages(prev => [...prev, { text, sender: 'user' }]);
     setIsTyping(true);
-    await processMessageToChatGPT(newMessages);
-  };
 
-  async function processMessageToChatGPT(chatMessages: any[]) {
-    let apiMessages = chatMessages.map((messageObject: any) => {
-      let role = "";
-      if (messageObject.sender === "ALI") {
-        role = "assistant";
-      } else {
-        role = "user";
-      }
-      return { role: role, content: messageObject.message}
-    });
-
-    const apiRequestBody = {
-      "model": "gpt-3.5-turbo",
-      "messages": [
-        systemMessage,
-        ...apiMessages
-      ]
-    }
-
-    await fetch("https://api.openai.com/v1/chat/completions", 
-    {
-      method: "POST",
-      headers: {
-        "Authorization": "Bearer " + API_KEY,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(apiRequestBody)
-    }).then((data) => {
-      return data.json();
-    }).then((data) => {
-      console.log(data);
-      setMessages([...chatMessages, {
-        message: data.choices[0].message.content,
-        sender: "ALI",
-        direction: "incoming" as const,
-        position: "single" as const,
-        sentTime: new Date().toLocaleTimeString()
-      }]);
+    setTimeout(() => {
+      setMessages(prev => [
+        ...prev,
+        {
+          text: "Great choice! 😊 Let me suggest some wonderful places in Pasig for you.",
+          sender: 'ai'
+        }
+      ]);
       setIsTyping(false);
-    });
-  }
+    }, 1200);
+  };
 
   return (
     <IonPage>
-      <IonHeader className="ion-no-border">
+      <IonHeader className="ai-header">
         <IonToolbar>
-          <IonTitle>AI Travel Assistant</IonTitle>
-          <IonIcon icon={sparkles} slot="end" color="primary" className="ion-margin-end" />
+          <IonTitle>
+            <div className="title">AI Pasig Guide</div>
+            <div className="subtitle">Your personal assistant for Pasig City</div>
+          </IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent className="chat-content">
-        <MainContainer>
-          <ChatContainer>       
-            <MessageList 
-              scrollBehavior="smooth" 
-              typingIndicator={isTyping ? <TypingIndicator content="ALI is typing" /> : null}
+
+        {/* CHAT MESSAGES */}
+        <div className="chat-area">
+          
+          {messages.map((msg, i) => (
+            <div
+              key={i}
+              className={`message-container ${msg.sender === 'ai' ? 'ai' : 'user'}`}
             >
-              {messages.map((message, i) => {
-                return <Message key={i} model={message} />
-              })}
-            </MessageList>
-            <MessageInput placeholder="Ask me anything..." onSend={handleSend} />        
-          </ChatContainer>
-        </MainContainer>
+              {msg.sender === 'ai' && (
+                <img src="public/assets/images/AI/ALI 2.png" alt="AI Profile" className="profile-img" />
+              )}
+              <div
+                className={`bubble ${msg.sender === 'ai' ? 'ai' : 'user'}`}
+              >
+                {msg.text}
+              </div>
+            </div>
+          ))}
+
+          {/* SUGGESTED QUESTIONS */}
+          {messages.length === 1 && (
+            <div className="suggestions">
+              <p className="suggest-title">Suggested Questions</p>
+              {suggestedQuestions.map((q, i) => (
+                <button key={i} onClick={() => sendMessage(q)}>
+                  {q}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {/* TYPING */}
+          {isTyping && (
+            <div className="bubble ai typing">
+              <span></span><span></span><span></span>
+            </div>
+          )}
+        </div>
+
+        {/* INPUT AREA */}
+        <div className="input-area">
+          <button className="icon-btn">
+            <IonIcon icon={mic} />
+          </button>
+
+          <input
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            placeholder="Type your question..."
+          />
+
+          <button
+            className="send-btn"
+            onClick={() => {
+              sendMessage(input);
+              setInput('');
+            }}
+          >
+            <IonIcon icon={send} />
+          </button>
+        </div>
+
       </IonContent>
     </IonPage>
   );

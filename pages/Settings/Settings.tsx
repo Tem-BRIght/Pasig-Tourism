@@ -29,19 +29,30 @@ import './Settings.css';
 const Settings: React.FC = () => {
   const router = useIonRouter();
 
-  const onItemClick = (label: string) => {
-    if (label === 'Notification Settings') {
-      router.push('/settings/notification');
-    } else if (label === 'Language') {
-      router.push('/settings/language-region');
-    }
-    else {
-      console.log(label);
-    }
-  };
+const onItemClick = (label: string) => {
+  if (label === 'Notification Settings') {
+    router.push('/settings/notification');
+  } else if (label === 'Language') {
+    router.push('/settings/language-region');
+  } else if (label === 'Contact Support') {
+    router.push('/settings/ContactSupport');
+  } else if (label === 'Help Center') {
+    router.push('/settings/help');
+  } else if (label === 'Report Problem') {
+    router.push('/settings/ReportProblem');
+  } else if (label === 'Booking History') {
+    router.push('/settings/BookingHistory');
+  } else if (label === 'Terms & Privacy') {
+    router.push('/settings/terms-privacy');
+  } else if (label === 'Privacy Settings') {
+    router.push('/settings/privacy'); 
+    console.log(label);
+  }
+};
 
   const logout = () => {
     console.log('Logout clicked');
+    router.push('/login');
   };
 
   const Item = ({ icon, color, label, onClick, extraClass = '' }: any) => (
@@ -66,10 +77,8 @@ const Settings: React.FC = () => {
 
         {/* Profile */}
         <div className="section">
-          <p className="section-title">Profile</p>
+          <p className='section-title'>History</p>
           <div className="card">
-            <Item icon={createOutline} color="purple" label="Edit Profile" onClick={() => onItemClick('Edit Profile')} />
-            <Item icon={starOutline} color="yellow" label="My Reviews" onClick={() => onItemClick('My Reviews')} />
             <Item icon={timeOutline} color="blue" label="Booking History" onClick={() => onItemClick('Booking History')} />
           </div>
         </div>
